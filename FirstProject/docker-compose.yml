@@ -1,0 +1,16 @@
+
+
+services:
+  web:
+    build: ./app
+    ports:
+      - "5002:5002"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:7-alpine"
+    ports:
+      - "6379:6379"
