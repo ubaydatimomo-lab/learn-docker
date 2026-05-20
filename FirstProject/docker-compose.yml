@@ -1,10 +1,8 @@
-
-
 services:
   web:
     build: ./app
-    ports:
-      - "5002:5002"
+    expose:
+      - "5000"  # This is the port Flask runs inside the container (keep it 5000)
     environment:
       - REDIS_HOST=redis
     depends_on:
@@ -12,5 +10,14 @@ services:
 
   redis:
     image: "redis:7-alpine"
+    expose:
+      - "6379"
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
-      - "6379:6379"
+      - "5002:80"  # This opens up port 5002 on your actual Mac/PC
+    depends_on:
+      - web
