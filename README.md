@@ -39,7 +39,7 @@ v
 
 ---
 
-## Your Approach
+## My Approach
 
 To mimic a real-world production deployment, I followed a modular, container-first approach rather than launching a standard monolithic local server.
 
