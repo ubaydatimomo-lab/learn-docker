@@ -13,31 +13,6 @@ I developed a full-stack, containerized system that serves interactive web pages
 * **State & Caching Layer:** A distributed Redis key-value store acting as a centralized state engine to keep data unified across independent workers.
 * **Routing & Load Balancing Layer:** An Nginx reverse proxy serving as the public-facing entry point, configured to distribute client traffic efficiently.
 
-                   +---------------+
-                   |  Web Browser  |
-                   +-------+-------+
-                           | (Port 5002)
-                           v
-                   +---------------+
-                   |     Nginx     |
-                   +-------+-------+
-                           |
-     +---------------------+---------------------+
-     | (Round-Robin)       | (Round-Robin)       | (Round-Robin)
-     v                     v                     v
-+------------+        +------------+        +------------+
-|  Web App 1 |        |  Web App 2 |        |  Web App 3 |
-+----+-------+        +----+-------+        +----+-------+
-|                     |                     |
-+---------------------+---------------------+
-|
-v
-+--------------+
-|    Redis     |
-+--------------+
-
-
----
 
 ## My Approach
 
